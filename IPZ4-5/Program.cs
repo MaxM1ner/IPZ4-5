@@ -16,15 +16,8 @@ namespace IPZ4_5
             items.Add(new Keyboard("Стирання фарби з клавіш", 3, 104, true));
             items.Add(new Computer("Запиленість", 10, "AMD Ryzen 7 3700X", (Keyboard)items.Where(x => x.Type == "Клавіатура").First()));
 
-            var computers = (IEnumerable<Computer>)items.Where(x => x.Type == "Комп'ютер");
-            Computer computer = computers.First();
-            foreach(var pc in computers)
-            {
-                if (pc.WearAmount < computer.WearAmount)
-                {
-                    computer = pc;
-                }
-            }
+            var computers = items.Where(x => x.Type == "Комп'ютер");
+            Computer computer = (Computer)computers.Where(x => x.WearAmount == computers.Min(y => y.WearAmount)).First();
 
             Console.WriteLine("PC dustiness: " + computer.WearAmount);
             computer.DoChanges();

@@ -4,11 +4,11 @@ using System.Linq;
 
 namespace IPZ4_5
 {
-    public class Foundation : Item
+    public class Foundation : Item, IMaterial
     {
         public override string Type { get; } = "Фундамент";
 
-        internal string MaterialType { get; set; }
+        public string MaterialType { get; set; }
 
         public override void DoChanges()
         {
@@ -21,11 +21,11 @@ namespace IPZ4_5
         }
     }
 
-    public class Window : Item
+    public class Window : Item, IMaterial
     {
         public override string Type { get; } = "Вікно";
 
-        internal string MaterialType { get; set; }
+        public string MaterialType { get; set; }
 
         internal string CoverColor { get; set; }
 
